@@ -1,0 +1,1047 @@
+@use "../base/mixin" as *;
+@use "../base/setting" as *;
+
+.mypage_h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+.mypage_head {
+  padding: 20px 0;
+  background-color: $COLOR_GREEN_BG;
+  @include media(sp) {
+    padding: 15px 0;
+  }
+  &_text {
+    color: $MAIN_COLOR;
+    font-size: 20px;
+    font-weight: 700;
+    @include media(sp) {
+      font-size: 18px;
+    }
+    &Sep {
+      margin-left: 1em;
+      margin-right: 1em;
+    }
+  }
+}
+.mypage_sidebar {
+  flex-basis: 200px;
+  flex-shrink: 0;
+  @include media(sp) {
+    display: none;
+  }
+  &_head {
+    position: relative;
+    margin-bottom: 32px;
+    color: $MAIN_COLOR;
+    font-size: 20px;
+    font-weight: 700;
+    &::after {
+      display: block;
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $MAIN_COLOR;
+      content: '';
+    }
+  }
+  &_item {
+    line-height: 2.0;
+    &.current_item {
+      color: $MAIN_COLOR;
+      font-weight: 700;
+      .mypage_sidebar_itemLink {
+        pointer-events: none;
+      }
+    }
+    &Link {
+      display: inline-block;
+      position: relative;
+      &::after {
+        display: block;
+        width: 100%;
+        height: 0;
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        background-color: $MAIN_COLOR;
+        content: '';
+      }
+      &:hover {
+        color: $MAIN_COLOR;
+        font-weight: 700;
+        &::after {
+          height: 1px;
+        }
+      }
+    }
+  }
+  &_menu {
+    margin-bottom: 40px;
+  }
+}
+.mypage_container {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 5%;
+  padding-top: 50px;
+  @include media(sp) {
+    padding-top: 10px;
+  }
+  .mypage_main {
+    flex-grow: 1;
+  }
+}
+.registGuide {
+  &_headBand {
+    background-color: $MAIN_COLOR;
+    text-align: center;
+    &_catch {
+      display: inline-block;
+      position: relative;
+      padding: 50px 0;
+      color: #FFF;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 60px;
+      @include media(sp) {
+        padding: 25px 0;
+        font-size: 20px;
+        line-height: 30px;
+      }
+      &::before, &:after {
+        display: block;
+        position: absolute;
+        height: 100%;
+        bottom: 0;
+        background: bottom/contain no-repeat;
+        content: '';
+      }
+      &::before {
+        right: calc(100% + 28px);
+        width: 52.5%;
+        background-image: url('/assets/img/member/registguide_head_illust1.webp');
+        @include media(sp) {
+          right: calc(100% + 8px);
+          width: 47.7%;
+        }
+      }
+      &::after {
+        left: calc(100% - 20px);
+        width: 69.3%;
+        background-image: url('/assets/img/member/registguide_head_illust2.webp');
+        @include media(sp) {
+          width: 64.3%;
+        }
+      }
+    }
+  }
+  &_content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 3.3%;
+    row-gap: 60px;
+    padding: 100px 0 80px;
+    @include media(sp) {
+      @include full_width();
+      flex-wrap: wrap;
+      padding: 40px 0 60px;
+    }
+    &_col {
+      flex-basis: 48.3%;
+      min-width: 580px;
+      position: relative;
+      padding: 25px 40px 70px;
+      background-color: $COLOR_GREEN_BG;
+      border-radius: 12px;
+      @include media(sp) {
+        flex-basis: 100%;
+        min-width: unset;
+        padding: 20px 20px 60px 20px;
+      }
+    }
+    &_head {
+      position: relative;
+      margin-bottom: 43px;
+      text-align: center;
+      @include media(sp) {
+        margin-bottom: 30px;
+      }
+      &Ttl {
+        display: inline-block;
+        color: $MAIN_COLOR;
+        font-size: 36px;
+        line-height: 92px;
+        @include media(sp) {
+          font-size: 24px;
+          line-height: 68px;
+        }
+        &Em {
+          font-family: 'Roboto', sans-serif;
+          font-size: 70px;
+          @include media(sp) {
+            font-size: 52px;
+          }
+        }
+      }
+      &Balloon {
+        display: block;
+        position: absolute;
+        top: -50px;
+        left: calc(50% - 107.5px);
+        width: 215px;
+        background-color: $MAIN_COLOR;
+        border-radius: 24px;
+        color: #FFF;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 48px;
+        letter-spacing: 0.1em;
+        text-align: center;
+        @include media(sp) {
+          top: -37px;
+          left: calc(50% - 73px);
+          width: 146px;
+          font-size: 18px;
+          line-height: 34px;
+        }
+        &B {
+          position: relative;
+          z-index: 1;
+          font-size: 30px;
+          @include media(sp) {
+            font-size: 20px;
+          }
+        }
+        &::after {
+          display: block;
+          position: absolute;
+          top: 77%;
+          left: 20px;
+          width: 14px;
+          height: 20px;
+          background-color: $MAIN_COLOR;
+          clip-path: polygon(0 0, 100% 0, 10% 100%);
+          transform: rotate(-60deg);
+          content: '';
+          @include media(sp) {
+            top: 67%;
+          }
+        }  
+      }
+    }
+    &_list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      column-gap: 3%;
+      row-gap: 30px;
+      margin-bottom: 10px;
+      @include media(sp) {
+        margin-bottom: 30px;
+      }
+    }
+    &_box {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      flex-basis: 48%;
+      min-width: 240px;
+      height: 240px;
+      padding-bottom: 20px;
+      border: 2px solid $MAIN_COLOR;
+      border-radius: 12px;
+      background-color: #FFF;
+      @include media(sp) {
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex-basis: 100%;
+        min-width: unset;
+        height: 140px;
+        padding-bottom: 0;
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+      &Txt {
+        color: $MAIN_COLOR;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 28px;
+        text-align: center;
+        @include media(sp) {
+          font-size: 16px;
+          line-height: 26px;
+          text-align: left;
+        }
+        &Em {
+          font-size: 24px;
+          @include media(sp) {
+            font-size: 20px;
+          }
+        }
+      }
+      &Fig {
+        flex-grow: 1;
+        @include media(sp) {
+          flex-grow: 0;
+        }
+        &.fig_1 {
+          width: 77%;
+          @include media(sp) {
+            width: 47%;
+          }
+        }
+        &.fig_2 {
+          width: 72%;
+          @include media(sp) {
+            width: 47%;
+          }
+        }
+        &.fig_3 {
+          width: 60.8%;
+          @include media(sp) {
+            width: 45%;
+          }
+        }
+        &.fig_4 {
+          width: 58.3%;
+          @include media(sp) {
+            width: 39%;
+          }
+        }
+        &.fig_5 {
+          width: 47.5%;
+          @include media(sp) {
+            width: 34%;
+          }
+        }
+        &.fig_6 {
+          width: 52.5%;
+          @include media(sp) {
+            width: 36%;
+          }
+        }
+        &Img {
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+      &Num {
+        position: absolute;
+        top: -25px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+        background-color: $MAIN_COLOR;
+        border-radius: 50%;
+        color: #FFF;
+        font-family: 'Roboto', sans-serif;
+        font-size: 26px;
+        line-height: 50px;
+        text-align: center;
+        @include media(sp) {
+          top: -20px;
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+          line-height: 40px;
+        }
+      }
+    }
+    &_note {
+      height: 1.6em;
+      margin-bottom: 11px;
+      color: $MAIN_COLOR;
+      font-size: 13px;
+      text-align: center;
+      @include media(sp) {
+        height: 50px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        text-align: left;
+      }
+    }
+    &_btn {
+      @include button($width: 420px, $line_height_pc: 76px, $font_size_pc: 20px, $font_size_sp: 18px, $width_sp: 100%, $line_height_sp: 76px);
+      margin: 0 auto;
+      &B {
+        font-size: 24px;
+        @include media(sp) {
+          font-size: 22px;
+        }
+      }
+      &Free {
+        display: inline-block;
+        width: 50px;
+        margin-right: 10px;
+        background-color: #FFF;
+        border-radius: 6px;
+        color: $MAIN_COLOR;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        line-height: 28px;
+        text-align: center;
+      }
+    }
+  }
+  &_nav {
+    @include media(pc) {
+      display: none;
+    }
+    display: flex;
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    border: 1px solid $MAIN_COLOR;
+    border-radius: 12px;
+    background-color: #FFF;
+    box-shadow: 0 3px 0 $COLOR_GREEN_SHADOW;
+    &_btn {
+      flex-basis: 50%;
+      padding: 10px 0;
+      border: none;
+      &_link {
+        display: block;
+        color: $MAIN_COLOR;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 38px;
+        &Span {
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+        .arrow_down {
+          vertical-align: middle;
+        }
+      }
+      &:first-child {
+        .registGuide_nav_btn_link {
+          border-right: 1px solid rgba(14,147,82,0.49);
+        }
+      }
+    }
+  }
+  &_cta {
+    &_catch {
+      color: $MAIN_COLOR;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-align: center;
+      @include media(sp) {
+        font-size: 16px;
+        letter-spacing: 0.025em;
+      }
+      &Span {
+        display: inline-block;
+        position: relative;
+        &::before, &::after {
+          display: block;
+          width: 2px;
+          height: 40px;
+          position: absolute;
+          bottom: 0;
+          transform-origin: bottom;
+          background-color: $MAIN_COLOR;
+          content: '';
+          @include media(sp) {
+            height: 54px;
+          }
+        }
+        &::before {
+          left: -20px;
+          transform: rotate(-45deg);
+          @include media(sp) {
+            left: 0;
+            transform: rotate(-20deg);
+          }
+        }
+        &::after {
+          right: -20px;
+          transform: rotate(45deg);
+          @include media(sp) {
+            right: 0;
+            transform: rotate(20deg);
+          }
+        }
+      }
+    }
+  }
+}
+.regist {
+  &_head_note {
+    font-size: 13px;
+  }
+  &_headBand {
+    width: 67.1vw;
+    max-width: 940px;
+    margin: 0 auto 50px;
+    background-color: $MAIN_COLOR;
+    &_title {
+      padding-left: 3.2%;
+      color: #FFF;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 70px;
+    }
+    @media screen and (max-width: 1400px) {
+      width: 74.38%;
+    }
+    @include media(sp) {
+      width: 100%;
+      margin-bottom: 30px;
+      &_title {
+        font-size: 20px;
+        line-height: 50px;
+      }
+    }
+  }
+  &_form {
+    width: 78.3%;
+    margin: 0 auto;
+    @include media(sp) {
+      width: 100%;
+    }
+    &_head {
+      position: relative;
+      margin-bottom: 45px;
+      color: $MAIN_COLOR;
+      font-size: 24px;
+      line-height: 1.6;
+      @include media(sp) {
+        margin-bottom: 19px;
+        font-size: 20px;
+      }
+      &::before, &::after {
+        display: block;
+        position: absolute;
+        height: 4px;
+        left: 0;
+        bottom: -7px;
+        content: '';
+        @include media(sp) {
+          height: 3px;
+          bottom: -2px
+        }
+      }
+      &::before {
+        width: 100%;
+        background-color: $COLOR_GREY;
+      }
+      &::after {
+        width: 200px;
+        background-color: $MAIN_COLOR;
+        @include media(sp) {
+          width: 120px;
+        }
+      }
+    }
+    &_container {
+      margin-bottom: 60px;
+      @include media(sp) {
+        margin-bottom: 40px;
+      }
+    }
+    &Table {
+      table-layout: fixed;
+      width: 100%;
+      &_th {
+        width: 27.7%;
+        padding: 30px 0;
+        border-bottom: 1px solid $COLOR_GREY_BORDER;
+        @include media(sp) {
+          display: block;
+          width: 100%;
+          padding-top: 20px;
+          padding-bottom: 0;
+          border-bottom-width: 0;
+        }
+      }
+      &_td {
+        width: 72.3%;
+        padding: 30px 0;
+        border-bottom: 1px solid $COLOR_GREY_BORDER;
+        @include media(sp) {
+          display: block;
+          width: 100%;
+          padding-bottom: 20px;
+          padding-top: 15px;
+        }
+      }
+      &_title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      &_require {
+        display: inline-block;
+        width: 35px;
+        margin-left: 10px;
+        background-color: $COLOR_RED;
+        border-radius: 3px;
+        color: #FFF;
+        font-size: 13px;
+        line-height: 20px;
+        text-align: center;
+      }
+      &_note {
+        margin-top: 10px;
+        padding-left: 1em;
+        font-size: 13px;
+        text-indent: -1em;
+      }
+      &_flex {
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+      }
+    }
+    &Input_text {
+      width: 100%;
+      padding: 22px 25px;
+      border: 1px solid $COLOR_GREY_BORDER;
+      border-radius: 6px;
+      font-size: 18px;
+      @include media(sp) {
+        padding: 18px 20px;
+      }
+      &::placeholder {
+        color: $COLOR_GREY_BORDER;
+        font-size: 18px;
+        @include media(sp) {
+          font-size: 16px;
+        }
+      }
+      &.text_w50 {
+        width: 47%;
+        &:first-child {
+          margin-right: 5%;
+        }
+      }
+      &.text_w40 {
+        width: 160px;
+        @include media(sp) {
+          width: 147px;
+        }
+      }
+    }
+    &Input_checkbox {
+      display: none;
+      &:checked + .regist_formLabel_checkbox .checkbox_mark {
+        background-color: $MAIN_COLOR;
+        color: #FFF;
+      }
+    }
+    &Label_checkbox {
+      cursor: pointer;
+      @include media(sp) {
+        display: block;
+        width: 100%;
+        padding: 16px 20px;
+        border: 1px solid $COLOR_GREY_BORDER;
+        border-radius: 6px;
+      }
+      .checkbox_mark {
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        margin-right: 8px;
+        border: 1px solid $COLOR_GREY_BORDER;
+        border-radius: 4px;
+        color: $COLOR_GREY_BORDER;
+        font-size: 16px;
+        line-height: 1;
+        padding: 3px 0;
+        text-align: center;
+      }
+      .checkbox_label {
+        font-size: 18px;
+      }
+    }
+    &_zipBtn {
+      width: 152px;
+      background-color: $TEXT_COLOR;
+      border-radius: 6px;
+      border: none;
+      color: #FFF;
+      line-height: 50px;
+      text-align: center;
+      @include media(sp) {
+        width: 140px;
+        line-height: 44px;
+      }
+    }
+    &More {
+      margin-bottom: 60px;
+      @include media(sp) {
+        margin-bottom: 40px;
+      }
+      &_lead {
+        margin-bottom: 20px;
+        text-align: center;
+        @include media(sp) {
+          margin-bottom: 15px;
+        }
+        &Txt {
+          display: inline-block;
+          position: relative;
+          &::before, &::after {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            width: 1px;
+            height: 54px;
+            background-color: $MAIN_COLOR;
+            transform-origin: bottom;
+            content: '';
+            @include media(sp) {
+              height: 86px;
+            }
+          }
+          &::before {
+            left: -20px;
+            transform: rotate(-20deg);
+            @include media(sp) {
+              left: -10px;
+            }
+          }
+          &::after {
+            right: -20px;
+            transform: rotate(20deg);
+            @include media(sp) {
+              right: -10px;
+            }
+          }
+        }
+      }
+      &_btn {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 25px 0;
+        border: none;
+        border-radius: 12px;
+        background-color: $COLOR_GREEN_BG;
+        text-align: center;
+        cursor: pointer;
+        &Spin {
+          display: inline-block;
+          position: relative;
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+          background-color: $MAIN_COLOR;
+          border-radius: 50%;
+          vertical-align: middle;
+          @include media(sp) {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+          }
+          &:before, &::after {
+            display: block;
+            position: absolute;
+            top: calc(50% - 0.5px);
+            left: calc(50% - 5px);
+            width: 10px;
+            height: 1px;
+            background-color: #FFF;
+            content: '';
+            @include media(sp) {
+              width: 8px;
+              left: calc(50% - 4px);
+            }
+          }
+          &::after {
+            transition: all ease .3s;
+            transform: rotate(90deg);
+          }
+        }
+        &.btn_open &Spin::after {
+          transform: rotate(0deg);
+        }
+        &Txt {
+          color: $MAIN_COLOR;
+          font-size: 20px;
+          font-weight: 700;
+          vertical-align: middle;
+          @include media(sp) {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    &_agree {
+      margin-bottom: 20px;
+      text-align: center;
+      &Link {
+        color: $MAIN_COLOR;
+        text-decoration: underline;
+      }
+    }
+    &_submit {
+      @include button($width: 420px, $line_height_pc: 76px, $font_size_pc: 24px, $font_size_sp: 20px, $line_height_sp: 76px);
+      margin: 0 auto;
+    }
+  }
+}
+.regist_complete {
+  width: 78%;
+  margin: 0 auto;
+  @include media(sp) {
+    width: 100%;
+  }
+  &_head {
+    margin-bottom: 30px;
+    font-size: 24px;
+    @include media(sp) {
+      margin: 40px 0 40px;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+  &_text {
+    margin-bottom: 1em;
+    &Link {
+      margin: 0 0.5em;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+  &_nav {
+    display: flex;
+    width: 80%;
+    margin: 140px auto 0;
+    padding: 50px;
+    border: 1px solid $MAIN_COLOR;
+    border-radius: 30px;
+    @include media(sp) {
+      flex-direction: column;
+      width: 100%;
+      margin-top: 80px;
+    }
+    &Block {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 50%;
+      @include media(sp) {
+        display: block;
+        width: 100%;
+      }
+      &:first-child {
+        padding-right: 50px;
+        border-right: 1px solid $MAIN_COLOR;
+        @include media(sp) {
+          padding-right: 0;
+          padding-bottom: 50px;
+          border-right: none;
+          border-bottom: 1px solid $MAIN_COLOR;
+        }
+      }
+      &:last-child {
+        padding-left: 50px;
+        @include media(sp) {
+          padding-left: 0;
+          padding-top: 50px;
+        }
+      }
+      &Txt {
+        flex-grow: 1;
+        font-size: 18px;
+        margin-bottom: 20px;
+        @include media(sp) {
+          font-weight: 700;
+        }
+      }
+      &Btn {
+        @include button($line_height_pc: 58px, $line_height_sp: 58px, $font_size_pc: 18px, $font_size_sp: 18px);
+      }
+    }
+  }
+}
+.mypage {
+  &_mv {
+    margin-top: 40px;
+    @include media(sp) {
+      margin-top: 20px;
+    }
+    &_container {
+      @include media(sp) {
+        @include full_width();
+      }  
+    }
+  }
+  &_headline {
+    padding: 40px 0 60px;
+    .common_headline {
+      padding: 0;
+    }
+  }
+  &_info {
+    padding: 80px 0 140px;
+    @include media(sp) {
+      padding: 40px 0 60px;
+    }
+    background-color: $COLOR_GREEN_BG;
+    &Box {
+      &_head {
+        margin-bottom: 30px;
+        font-size: 28px;
+        @include media(sp) {
+          font-size: 24px;
+        }
+      }
+      &_wrap {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        row-gap: 40px;
+        column-gap: 40px;
+        @include media(sp) {
+          flex-wrap: wrap;
+          row-gap: 20px;
+        }
+      }
+      &_plate {
+        display: flex;
+        align-items: center;
+        flex-basis: 62%;
+        flex-shrink: 0;
+        min-width: 720px;
+        padding: 20px 40px 20px 0;
+        background-color: #FFF;
+        border-radius: 12px;
+        @include media(sp) {
+          flex-wrap: wrap;
+          flex-basis: 100%;
+          min-width: unset;
+          padding: 40px 10px;
+        }
+        &Head {
+          flex-basis: 210px;
+          flex-shrink: 0;
+          text-align: center;
+          @include media(sp) {
+            flex-basis: 100%;
+            text-align: left;
+          }
+          &_wrap {
+            display: flex;
+            flex-direction: column;
+            row-gap: 14px;
+            align-items: center;
+            @include media(sp) {
+              flex-direction: row;
+              column-gap: 15px;
+              padding-left: 10px;
+              padding-bottom: 30px;
+            }
+          }
+          &Img {
+          }
+        }
+        &Body {
+          flex-grow: 1;
+          padding: 16px 0 10px 40px;
+          border-left: 1px solid rgba(14,147,82, 0.4);
+          @include media(sp) {
+            padding-left: 0;
+            padding-top: 40px;
+            padding-bottom: 0;
+            border-left: none;
+            border-top: 1px solid rgba(14,147,82, 0.4);
+          }
+          &Ttl {
+            margin-bottom: 20px;
+            font-size: 18px;
+            @include media(sp) {
+              padding-left: 10px;
+            }
+          }
+        }
+        &Link {
+          display: block;
+          margin-top: 30px;
+          font-weight: 700;
+          text-align: right;
+          @include media(sp) {
+            margin-top: 20px;
+          }
+          &Span {
+            vertical-align: middle;
+          }
+          .common_link_arrow {
+            margin-left: 4px;
+          }
+        }
+      }
+      &_nav {
+        flex-basis: 415px;
+        @include media(sp) {
+          flex-basis: 100%;
+        }
+        &Wrap {
+          display: flex;
+          column-gap: 15px;
+          flex-wrap: wrap;
+          row-gap: 18px;
+          @include media(sp) {
+            column-gap: 10px;
+          }
+        }
+        &Btn {
+          width: 200px;
+          height: 130px;
+          background-color: #FFF;
+          border: 1px solid $MAIN_COLOR;
+          border-radius: 12px;
+          box-shadow: 0 4px 0 $COLOR_GREEN_SHADOW;
+          font-size: 16px;
+          @include media(sp) {
+            width: 172px;
+            height: 110px;
+            box-shadow: 0 3px 0 $COLOR_GREEN_SHADOW;
+          }
+          &Link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 13px;
+            width: 100%;
+            @include media(sp) {
+              row-gap: 9px;
+            }
+          }
+          &Img {
+            width: 40px;
+            @include media(sp) {
+              width: 34px;
+            }
+          }
+          &.btn_w100 {
+            width: 100%;
+            height: 60px;
+          }
+          &:hover {
+            box-shadow: 0 2px 0 $COLOR_GREEN_SHADOW;
+            transform: translateY(2px);
+          }        
+        }
+      }
+      &:first-child {
+        margin-bottom: 80px;
+        @include media(sp) {
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}

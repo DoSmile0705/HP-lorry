@@ -1,0 +1,205 @@
+/*----------------------------------------------------------
+
+mixin
+
+----------------------------------------------------------*/
+// ブレイクポイント
+$bp-sp: 768px;
+$bp-tab: 1024px;
+$bp-pc: 769px;
+@mixin media($media-width) {
+  @if $media-width==sp {
+    @media only screen and (max-width: $bp-sp) {
+      @content;
+    }
+  }
+  @else if $media-width==tab {
+    @media only screen and (max-width: $bp-tab) {
+      @content;
+    }
+  }
+  @else if $media-width==pc {
+    @media only screen and (min-width: $bp-pc) {
+      @content;
+    }
+  }
+}
+
+// vw計算式
+@function vw($pixelsVw, $width: 375) {
+  @return calc($pixelsVw / $width * 100vw);
+}
+
+// ボタン
+@mixin button(
+  $width: 100%,
+  $width_sp: 100%,
+  $font_size_pc: 15px,
+  $font_size_sp: 16px,
+  $line_height_pc: 40px,
+  $line_height_sp: 50px,
+  $letter_spacing: 0.1em
+) {
+  position: relative;
+  display: block;
+  width: $width;
+  box-shadow: 0 4px 0 #0A6D3D;
+  border: 1px solid #0E9352;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  @include media(sp) {
+    width: $width_sp;
+  }
+  &.btn_white {
+    background-color: #FFFFFF;
+    color: #0E9352;;
+  }
+  &.btn_green {
+    background-color: #0E9352;
+    color: #FFFFFF;
+  }
+  &.btn_grey {
+    background-color: #CCC;
+    border-color: #CCC;
+    box-shadow: 0 3px 0 #AAA;
+    color: #FFFFFF;
+  }
+  &.btn_no_shadow {
+    box-shadow: none;
+  }
+  &_link {
+    line-height: $line_height_pc;
+    letter-spacing: $letter_spacing;
+    font-size: $font_size_pc;
+    font-weight: 700;
+    @include media(sp) {
+      line-height: $line_height_sp;
+      font-size: $font_size_sp;
+    }
+    .btn_icon, .btn_text {
+      vertical-align: middle;
+    }
+    .btn_icon {
+      aspect-ratio: auto 1 / 1;
+      margin-right: 7px;
+      width: 20px;
+      height: 20px;
+    }  
+  }
+  .btn_arrow {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+  }
+  &:hover {
+    box-shadow: 0 2px 0 #0A6D3D;
+    transform: translateY(2px);
+  }
+  &.btn_grey:hover {
+    box-shadow: 0 2px 0 #AAA;
+  }
+}
+//
+@mixin full_width() {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+//
+@mixin common_visit() {
+  display: flex;
+  margin: 0 auto;
+  padding: 50px;
+  border: 1px solid #0E9352;
+  border-radius: 30px;
+  @include media(sp) {
+    flex-direction: column;
+  }
+  .common_visit_block {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    @include media(sp) {
+      display: block;
+      width: 100%;
+    }
+    &:first-child {
+      padding-right: 50px;
+      border-right: 1px solid #0E9352;
+      @include media(sp) {
+        padding-right: 0;
+        padding-bottom: 50px;
+        border-right: none;
+        border-bottom: 1px solid #0E9352;
+      }
+    }
+    &:last-child {
+      padding-left: 50px;
+      @include media(sp) {
+        padding-left: 0;
+        padding-top: 50px;
+      }
+    }
+    &Txt {
+      flex-grow: 1;
+      font-size: 18px;
+      margin-bottom: 20px;
+      @include media(sp) {
+        font-weight: 700;
+      }
+    }
+    &Btn {
+      @include button($line_height_pc: 58px, $line_height_sp: 58px, $font_size_pc: 18px, $font_size_sp: 18px);
+    }
+  }
+  &.common_visit_3col {
+    flex-basis: calc(100% / 3);
+    justify-content: space-between;
+    .common_visit_block {
+      &:first-child {
+        padding-right: 25px;
+        padding-left: 25px;
+        @include media(sp) {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+      &:nth-child(2) {
+        padding-left: 25px;
+        padding-right: 25px;
+        border-right: 1px solid #0E9352;
+        @include media(sp) {
+          padding-right: 0;
+          padding-left: 0;
+          padding-bottom: 50px;
+          padding-top: 50px;
+          border-right: none;
+          border-bottom: 1px solid #0E9352;
+        }
+      }
+      &:last-child {
+        padding-left: 25px;
+        padding-right: 25px;
+        @include media(sp) {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.pc {
+  display: block;
+  @include media(sp){
+    display: none;
+  }
+}
+
+.sp {
+  display: none;
+  @include media(sp){
+    display: block;
+  }
+}

@@ -1,0 +1,459 @@
+@charset "UTF-8";
+@use "../base/setting" as *;
+@use "../base/mixin" as *;
+/* 検索パネル */
+// トラック種別検索
+.search_select {
+  &_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    padding: 30px 0;
+    @include media(sp) {
+      row-gap: 12px;
+      padding: 20px 0;
+    }
+  }
+  &Input {
+    display: none;
+  }
+  &_btn {
+    flex-basis: 9.25%;
+    position: relative;
+    min-width: 83px;
+    height: 95px;
+    border-radius: 6px;
+    box-shadow: 0 5px 0 $COLOR_GREEN_SHADOW;
+    background-color: #FFF;
+    cursor: pointer;
+    transition: all ease .3s;
+    @include media(sp) {
+      flex-basis: 83px;
+      height: 86px;
+    }
+    &:hover {
+      background-color: $COLOR_GREEN_BG;
+    }
+    &:active {
+      box-shadow: 0 3px 0 $COLOR_GREEN_SHADOW;
+      transform: translateY(2px);
+    }
+    &Txt {
+      display: block;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 1em;
+      color: #111;
+      font-size: clamp(11px, 1.01vw, 13px);
+      font-weight: 700;
+      text-align: center;
+      @include media(sp) {
+        bottom: 10px;
+        font-size: 12px;
+      }
+    }
+    &::after {
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: 36px;
+      width: 100%;
+      height: calc(100% - 36px);
+      background-position: bottom;
+      background-repeat: no-repeat;
+      content: '';
+      @include media(sp) {
+        left: 50%;
+        bottom: 22px;
+        width: 75%;
+        height: calc(100% - 30px);
+        background-position: center;
+        background-size: contain;
+        transform: translateX(-50%);
+      }
+    }
+    &.ico_crane::after {
+      background-image: url(../img/stock/stock_ico_crane.png);
+    }
+    &.ico_flat::after {
+      background-image: url(../img/stock/stock_ico_flat.png);
+    }
+    &.ico_dump::after {
+      background-image: url(../img/stock/stock_ico_dump.png);
+    }
+    &.ico_wcab::after {
+      background-image: url(../img/stock/stock_ico_wcab.png);
+    }
+    &.ico_power::after {
+      background-image: url(../img/stock/stock_ico_power.png);
+    }
+    &.ico_alumi::after {
+      background-image: url(../img/stock/stock_ico_alumi.png);
+    }
+    &.ico_refrige::after {
+      background-image: url(../img/stock/stock_ico_refrige.png);
+    }
+    &.ico_wing::after {
+      background-image: url(../img/stock/stock_ico_wing.png);
+    }
+    &.ico_1box::after {
+      background-image: url(../img/stock/stock_ico_1box.png);
+    }
+    &.ico_other::after {
+      background-image: url(../img/stock/stock_ico_other.png);
+      @include media(sp) {
+        width: 65%;
+        bottom: 28px;
+      }
+    }
+    &.ico_other .search_select_btnTxt {
+      @include media(sp) {
+        font-size: 11px;
+      }
+    }
+  }
+  &_membership {
+    flex-basis: 174px;
+    height: 86px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    box-shadow: 0 5px 0 $COLOR_GREEN_SHADOW;
+    background: $COLOR_GREEN_BG;
+    &Ttl {
+      margin-bottom: 7px;
+      border-radius: 3px;
+      color: #FFF;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 24px;
+      text-align: center;
+    }
+    &Txt {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      font-size: 11px;
+      line-height: 16px;
+    }
+  }
+}
+// 詳細検索
+.searchDetail {
+  margin-bottom: 50px;
+  @include media(sp) {
+    margin-bottom: 40px;
+  }
+  &_form {
+    background-color: $COLOR_GREEN_BG;
+    @include media(sp) {
+      padding-top: 10px;
+    }
+    &Row {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 1%;
+      row-gap: 20px;
+      &Col {
+        flex-basis: 32%;
+        flex-shrink: 0;
+        &.expand_col_1 {
+          flex-basis: 26%;
+        }
+        &.expand_col_2 {
+          flex-basis: 26%;
+        }
+        &.expand_col_3 {
+          // flex-basis: 37%;
+          flex-grow: 1;
+        }
+        @include media(sp) {
+          &.sp_fb50 {
+            flex-basis: 49%;
+          }
+          &.sp_fb100 {
+            flex-basis: 100%;
+          }
+        }
+      }
+    }
+    &_help {
+      position: absolute;
+      right: 5px;
+      top: calc(50% - 9px);
+    }
+    &_label {
+      display: inline-block;
+      margin-bottom: 11px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    &_flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 0.5em;
+      row-gap: 8px;
+      @include media(sp) {
+        &.flex_sp_btns {
+          column-gap: 0;
+          row-gap: 0;
+        }
+      }
+      .check_label_price {
+        width: 185px;
+        @include media(sp) {
+          width: 50%;
+        }
+      }
+      .check_label_size {
+        width: 106px;
+      }
+      & + & {
+        margin-top: 8px;
+      }
+    }
+    &_inputTxt {
+      padding: 7px 20px;
+      border: 1px solid $COLOR_GREY_BORDER;
+      border-radius: 6px;
+      font-size: inherit;
+      line-height: inherit;
+      &::placeholder {
+        color: $COLOR_GREY_BORDER;
+        font-size: 13px;
+      }
+      &.input_price {
+        width: 9em;
+        margin-right: 3px;
+      }
+      &.input_keyword {
+        width: 100%;
+      }
+    }
+    &_checkbox {
+      display: flex;
+      align-items: center;
+      column-gap: 0.5em;
+      position: relative;
+      padding: 7px 0.5em;
+      border: 1px solid $COLOR_GREY_BORDER;
+      border-radius: 6px;
+      background-color: #FFF;
+      cursor: pointer;
+      @include media(sp) {
+        justify-content: center;
+        &.check_label_size {
+          flex-basis: 33.33%;
+        }
+      }
+      .checkbox_view {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $COLOR_GREY_BORDER;
+        color: $COLOR_GREY_BORDER;
+        font-size: 12px;
+        line-height: 1.0;
+        padding: 3px 0;
+        text-align: center;
+        @include media(sp) {
+          display: none;
+        }
+      }
+      .checkbox_txt {
+        letter-spacing: 0;
+      }
+    }    
+    &_checkbox_hide, &_radio_hide {
+      display: none;
+      &:checked + .searchDetail_form_checkbox {
+        border-color: $MAIN_COLOR;
+        @include media(sp) {
+          background-color: $MAIN_COLOR;
+          .checkbox_txt {
+            color: #FFF;
+          }
+        }
+        .checkbox_view {
+          background-color: $MAIN_COLOR;
+          color: #FFF;
+        }
+      }
+    }
+    &_select {
+      width: 220px;
+      height: 42px;
+      padding: 11px 0 12px 20px;
+      border: 1px solid $COLOR_GREY_BORDER;
+      border-radius: 6px;
+      color: $MAIN_COLOR;
+      @include media(sp) {
+        width: 100%;
+      }
+      &.select_my {
+        width: 180px;
+        @include media(sp) {
+          width: 155px;
+        }
+      }
+      @include media(sp) {
+        &.select_maker, &.select_name {
+          width: 173px;
+        }
+      }
+    }
+    &_tags {
+      margin-top: 15px;
+    }
+    &_tag {
+      display: inline-block;
+      margin-right: 20px;
+      color: $MAIN_COLOR;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+    &_basic {
+      padding: 20px 0 30px;
+      @include media(sp) {
+        display: none;
+        padding-bottom: 20px;
+        border: none;
+        &.is_open + .searchDetail_form_expand {
+          display: block;
+        }
+      }
+    }
+    &_expand {
+      display: none;
+      padding: 30px 0;
+      border-top: 1px solid $COLOR_GREY_BORDER;
+      @include media(sp) {
+        border-top: none;
+      }
+      .searchDetail_formRow {
+        column-gap: 4%;
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include media(sp) {
+          column-gap: 2%;
+        }
+      }
+      .expand_col_1 {
+        .searchDetail_form_label {
+          width: 62px;
+          text-align: right;
+          @include media(sp) {
+            text-align: left;
+          }
+        }
+      }
+      .expand_col_2 {
+        .searchDetail_form_label {
+          width: 78px;
+          text-align: right;
+          @include media(sp) {
+            text-align: left;
+          }
+        }
+      }
+      .expand_col_3 {
+        .searchDetail_form_label {
+          width: 78px;
+          text-align: right;
+          @include media(sp) {
+            text-align: left;
+          }
+        }
+      }
+      .searchDetail_form_label {
+        margin-bottom: 0;
+        @include media(sp) {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  &_form_control {
+    background-color: #FFF;
+    &Btns {
+      display: flex;
+      justify-content: space-between;
+      @include media(sp) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .searchDetail_form_more {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 5px;
+        width: 227px;
+        height: 66px;
+        border-radius: 0 0 12px 12px;
+        background-color: $COLOR_GREEN_BG;
+        cursor: pointer;
+        @include media(sp) {
+          height: 60px;
+        }
+        &Sign {
+          position: relative;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: $MAIN_COLOR;
+          &::before, &::after {
+            display: block;
+            position: absolute;
+            background-color: #FFF;
+            content: '';
+          }
+          &::before {
+            left: calc(50% - 4px);
+            top: calc(50% - 0.5px);
+            width: 8px;
+            height: 1px;
+          }
+          &::after {
+            top: calc(50% - 4px);
+            left: calc(50% - 0.5px);
+            height: 8px;
+            width: 1px;
+          }
+        }
+        &Txt {
+          color: $MAIN_COLOR;
+          font-weight: 700;
+        }
+        &.btn_open {
+          .searchDetail_form_moreSign::after {
+            transform: rotate(90deg);
+          }
+        }
+      }
+      .searchDetail_form_submit {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+        padding-top: 20px;
+        @include media(sp) {
+          column-gap: 10px;
+          justify-content: center;
+          width: 100%;
+        }
+        &Clear {
+          @include button($width: 150px, $width_sp: 120px, $line_height_pc: 50px,);
+        }
+        &Search {
+          @include button($width: 280px, $width_sp: 205px, $font_size_pc: 18px, $font_size_sp: 18px, $line_height_pc: 50px);
+        }
+      }
+    }
+  }
+}

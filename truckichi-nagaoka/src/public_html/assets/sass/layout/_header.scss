@@ -1,0 +1,460 @@
+@use "../base/mixin" as *;
+@use "../base/setting" as *;
+
+/*----------------------------------------------------------
+
+ヘッダー
+
+----------------------------------------------------------*/
+
+/* 見出し */
+/* ============================================ */
+.header {
+  @media only screen and (max-width: $HEADER_BREAKPOINT) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100vw;
+    height: $SITE_HEADER_HEIGHT_TAB;
+  }
+  @include media(sp) {
+    height: $SITE_HEADER_HEIGHT_SP;
+  }
+  &_navigation {
+    padding: 8px 0 14px;
+    border-top: 6px solid $MAIN_COLOR;
+    background-color: #FFF;
+    @include media(sp) {
+      padding-top: 0;
+      padding-bottom: 0;
+      border-top: 2px solid $MAIN_COLOR;
+    }
+  }
+  &_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media(sp) {
+      margin-right: calc(50% - 50vw);
+    }
+  }
+  &_logo {
+    flex-basis: 25%;
+    @include media(sp) {
+      flex-basis: 167px;
+    }
+    &_wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    &_img {
+      width: 70%;
+      aspect-ratio: auto 43 / 7;
+      margin-right: 3%;
+      @include media(sp) {
+        width: 121px;
+      }
+    }
+    &_txt {
+      font-size: clamp(14px, 1.87vw, 24px);
+      letter-spacing: 0.05em;
+      @include media(sp) {
+        font-size: 13px;
+      }
+    }
+  }
+  &_mypage_menu {
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 2.7%;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: 1.5%;
+    @include media(sp) {
+      margin-right: 0;
+    }
+    &_user {
+      display: flex;
+      align-items: center;
+      margin-right: 18px;
+      &Icon {
+        margin-right: 8px;
+      }
+      &Name {
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+    &_invite {
+      &Btn {
+        padding: 4px 12px 4px 4px;
+        border: 1px solid $MAIN_COLOR;
+        border-radius: 6px;
+        box-shadow: 0 2px 0 $MAIN_COLOR;
+        transition: all ease .3s;
+        @include media(sp) {
+          display: none;
+        }
+        &:hover {
+          background-color: $COLOR_GREEN_BG;
+          box-shadow: 0 1px 0 $MAIN_COLOR;
+          transform: translateY(1px);
+        }
+        &Wrap {
+          display: flex;
+          align-items: center;
+        }
+        &Head {
+          margin-right: 6px;
+          padding: 4px 6px;
+          border-radius: 4px;
+          background-color: $COLOR_YELLOW;
+          font-size: clamp(10px, 1.01vw, 13px);
+          font-weight: 700;
+          line-height: 15px;
+          letter-spacing: 0.05em;
+        }
+        &Text {
+          margin-right: 10px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 1.35;
+          text-align: left;
+        }
+      }
+    }
+    &_btn {
+      display: flex;
+      align-items: center;
+      &Item {
+        width: 80px;
+        border-left: 1px solid $COLOR_GREY_BORDER;
+        transition: all ease .3s;
+        @include media(sp) {
+          width: 60px;
+        }
+        &:last-child {
+          border-right: 1px solid $COLOR_GREY_BORDER;
+          @include media(sp) {
+            border-right-width: 0;
+          }
+        }
+        &:hover {
+          background-color: $COLOR_GREEN_BG;
+        }
+        &Wrap {
+          display: block;
+          width: 100%;
+          padding: 5px 0;
+          text-align: center;
+          @include media(sp) {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+        }
+        &Icon {
+          display: block;
+          width: 20px;
+          height: 20px;
+          aspect-ratio: auto 1 / 1;
+          margin: 0 auto 4px;
+          @include media(sp) {
+            margin-bottom: 0;
+            width: 18px;
+            height: 18px;
+          }
+        }
+        &Text {
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+          letter-spacing: -0.025em;
+          @include media(sp) {
+            font-size: 10px;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+  &_contact {
+    flex-basis: 216px;
+    flex-shrink: 0;
+  }
+  &_sp_btn {
+    flex-basis: 56px;
+    height: 50px;
+    &Label {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: $MAIN_COLOR;
+      cursor: pointer;
+    }
+    &Bar {
+      position: relative;
+      width: 23px;
+      height: 14px;
+      margin-bottom: 6px;
+      &Line {
+        display: inline-block;
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        border-radius: 0.5px;
+        background-color: #FFF;
+        transform-origin: left;
+        transition: all ease .3s;
+        &.line1 {
+          top: 0;
+        }
+        &.line2 {
+          top: 50%;
+        }
+        &.line3 {
+          bottom: 0;
+        }
+      }
+    }
+    &Text {
+      color: #FFF;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.0;
+    }
+  }
+  &_slide_menu {
+    position: fixed;
+    top: $SITE_HEADER_HEIGHT_TAB;
+    left: 0;
+    z-index: 10000;
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
+    background-color: $COLOR_GREEN_BG;
+    transition: height ease .3s;
+    @include media(sp) {
+      top: $SITE_HEADER_HEIGHT_SP;
+    }
+    &_container {
+      width: 80%;
+      margin: 0 auto;
+      @include media(sp) {
+        width: 100%;
+      }
+    }
+    &_welcome {
+      padding: 10px 0;
+      border-bottom: 2px solid #FFF;
+    }
+    &_member {
+      padding: 19px 25px;
+      border-radius: 6px;
+      background-color: #FFF;
+      &Name {
+        margin-right: 8px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+    &_guest {
+      padding: 14px 0;
+      border-radius: 6px;
+      background-color: #FFF;
+      &Name {
+        padding-left: 20px;
+        margin-bottom: 9px;
+        font-weight: 700;
+      }
+      &Btns {
+        display: flex;
+        justify-content: center;
+        column-gap: 2.5%;
+        padding: 0 3.6%;
+        &_btn {
+          @include button($line_height_sp: 46px,$letter_spacing: 0.025em);
+        }
+      }
+    }
+    &Btns {
+      padding: 40px 0;
+      background-color: #FFF;
+      &Wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+      }
+      &_btn {
+        @include button($line_height_sp: 46px,$letter_spacing: 0.025em);
+      }
+    }
+  }
+  #toggle-slide-menu:checked ~ .header_slide_menu {
+    height: calc(100vh - $SITE_HEADER_HEIGHT_TAB);
+    overflow-y: auto;
+    @include media(sp) {
+      height: calc(100vh - $SITE_HEADER_HEIGHT_SP);
+    }
+  }
+  #toggle-slide-menu:checked ~ .header_navigation .header_sp_btnBar {
+    .line1 {
+      width: 27px;
+      transform: rotate(31deg);
+    }
+    .line2 {
+      display: none;
+    }
+    .line3 {
+      width: 27px;
+      transform: rotate(-31deg);
+    }
+  }
+  &_menu {
+    height: 56px;
+    background-color: $TEXT_COLOR;
+    &_container {
+      height: 100%;
+    }
+    &_list {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    &_item {
+      position: relative;
+      z-index: 1;
+      flex-basis: 20%;
+      height: 100%;
+      border-left: 1px solid #FFF;
+      &:last-child {
+        border-right: 1px solid #FFF;
+      }
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 0;
+        background-color: #545454;
+        content: '';
+        transition: height ease .3s;
+      }
+      &:hover::before {
+        height: 100%;
+      }
+      &Wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        color: #FFF;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 21px;
+        text-align: center;
+        .menu_item_small {
+          font-size: 10px;
+          line-height: 15px;
+        }
+      }
+    }
+  }
+  &_sp_none {
+    @media only screen and (max-width: $HEADER_BREAKPOINT) {
+      display: none;
+    }
+  }
+  &_pc_none {
+    display: none;
+    @media only screen and (max-width: $HEADER_BREAKPOINT) {
+      display: block;
+    }
+  }
+}
+.scroll_lock {
+  overflow: hidden;
+}
+.front_spNav {
+  &_section {
+    &Head {
+      padding: 11px 0;
+    }
+    &Icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    &Title {
+      color: $MAIN_COLOR;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+  }
+  &_menu {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1px;
+    row-gap: 1px;
+    background-color: #CCC;
+    &Item {
+      position: relative;
+      flex-basis: calc(50% - 0.5px);
+      padding-left: 20px;
+      background-color: #FFF;
+      font-weight: 700;
+      line-height: 46px;
+      &Arrow {
+        position: absolute;
+        right: 7%;
+        top: calc(50% - 2px);
+        transform: rotate(45deg);
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-top: 1px solid $MAIN_COLOR;
+        border-right: 1px solid $MAIN_COLOR;
+      }
+      &W {
+        line-height: 62px;
+      }
+      &2Row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 62px;
+      }
+      &Span {
+        display: block;
+        line-height: 20px;
+      }
+      &Small {
+        font-size: 10px;
+        line-height: 1.6;
+      }
+      &Bottom {
+        border-bottom: 1px solid #CCC;
+      }
+    }
+  }
+}
+
+.main {
+  @media only screen and (max-width: $HEADER_BREAKPOINT) {
+    padding-top: $SITE_HEADER_HEIGHT_TAB;
+  }
+  @include media(sp) {
+    padding-top: $SITE_HEADER_HEIGHT_SP;
+  }
+}

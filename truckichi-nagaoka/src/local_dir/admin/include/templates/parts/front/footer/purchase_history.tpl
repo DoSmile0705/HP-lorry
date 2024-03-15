@@ -1,0 +1,1 @@
+<script src="/assets/js/detail_slick.js"></script>

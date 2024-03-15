@@ -1,0 +1,900 @@
+@use "../base/setting" as *;
+@use "../base/mixin" as *;
+
+.detail {
+  &_head {
+    max-width: 1140px;
+    padding: 30px 0;
+    font-size: 24px;
+    line-height: 1.45;
+    @include media(sp) {
+      font-size: 18px;
+    }
+  }
+  @include media(sp) {
+    &_sp_container {
+      width: 94.6vw;
+      max-width: 710px;
+      margin: 0 auto;
+    }
+  }
+  &_grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content max-content max-content max-content;
+    width: 85.7vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    @media screen and (max-width: 1400px) {
+      width: 95%;
+    }
+    @include media(sp) {
+      width: 100%;
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content;
+    }  
+    &_picture {
+      grid-row: 1;
+      grid-column: 1;
+    }
+    &_description {
+      grid-row: 2 / 4;
+      grid-column: 1;
+      @include media(sp) {
+        grid-row: 6;
+      }
+    }
+    &_cta {
+      grid-row: 1;
+      grid-column: 2;
+      @include media(sp) {
+        grid-row: 4;
+        grid-column: 1;
+      }
+    }
+    &_price {
+      grid-row: 2;
+      grid-column: 2;
+      @include media(sp) {
+        grid-row: 3;
+        grid-column: 1;
+      }
+    }
+    &_spec {
+      grid-row: 3;
+      grid-column: 2;
+      @include media(sp) {
+        grid-row: 5;
+        grid-column: 1;
+      }
+    }
+    &_support {
+      grid-row: 4;
+      grid-column: 2;
+      @include media(sp) {
+        grid-row: 7;
+        grid-column: 1;
+      }
+    }
+    &_col2 {
+      padding-left: 6.6%;
+      @include media(sp) {
+        padding-left: 0;
+      }
+    }
+    &_actual {
+      padding-bottom: 30px;
+      @include media(sp) {
+        padding-bottom: 40px;
+      }
+    }
+  }
+  &_picture {
+    padding-bottom: 40px;
+    &_gallery {
+      // height: 605px;
+      // margin-bottom: 30px;
+      // background-color: #CCC;
+    }
+    &_caption {
+      &Ttl {
+        margin-bottom: 20px;
+        font-size: 13px;
+      }
+      &Txt {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        @include media(sp) {
+          font-size: 18px;
+        }
+      }
+      &More {
+        font-weight: 700;
+        text-align: right;
+        @include media(sp) {
+          text-align: center;
+        }
+        &Txt, &Ico {
+          vertical-align: middle;
+        }
+        &Ico {
+          margin-left: 5px;
+        }
+      }
+    }
+    &_spEx {
+      margin-top: 30px;
+      &Spec {
+        margin-bottom: 20px;
+        &Dl {
+          display: flex;
+          border: 1px solid $COLOR_GREY_BORDER;
+          & + dl {
+            border-top: none;
+          }
+        }
+        &Dt, &Dd {
+          font-size: 13px;
+          padding-top: 0.5em;
+          padding-bottom: 0.5em;
+        }
+        &Dt {
+          background-color: $COLOR_GREY;
+          text-align: center;
+          &:last-of-type {
+            flex-basis: 24%;
+            flex-shrink: 0;
+          }
+          &:first-of-type {
+            flex-grow: 1;
+          }
+        }
+        &Dd {
+          flex-basis: 30%;
+          flex-shrink: 0;
+          padding-left: 1em;
+        }
+      }
+    }
+  }
+  &_description {
+    &Block {
+      padding-bottom: 40px;
+      border-top: 2px solid $MAIN_COLOR;
+      @include media(sp) {
+        .slide_item {
+          display: none;
+        }
+      }
+    }
+    &_head {
+      position: relative;
+      padding: 15px;
+      border-bottom: 1px solid $COLOR_GREY_BORDER;
+      font-size: 18px;
+      .detail_slide_btn {
+        right: 15px;
+      }
+    }
+    &_text {
+      padding: 20px 0;
+      line-height: 1.6;
+    }
+    &_text + &_text {
+      padding-bottom: 0;
+      border-top: 1px dashed $COLOR_GREY_BORDER;
+    }
+    &_specList {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 6px;
+      column-gap: 6px;
+      padding: 20px 0;
+      @include media(sp) {
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+      &Item {
+        flex-basis: 196px;
+        flex-shrink: 0;
+        padding-left: 10px;
+        background-color: $COLOR_GREEN_BG;
+        border-radius: 6px;
+        font-weight: 700;
+        line-height: 36px;
+        letter-spacing: 0;
+        @include media(sp) {
+          flex-basis: 49%;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          padding-right: 1em;
+          line-height: 1.4;
+        }
+      }
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+    &_specList + &_specList {
+      border-top: 1px dashed $COLOR_GREY_BORDER;
+    }
+  }
+  &_cta {
+    // padding-bottom: 30px;
+    &_head {      
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 12px 20px;
+      background-color: $COLOR_GREEN_BG;
+      @media screen and (min-width: 769px) {
+        &_pc_none {
+          display: none;
+        }
+      }
+    }
+    &_inquiry {
+      font-weight: 700;
+      @include media(sp) {
+        font-size: 13px;
+      }
+      &Num {
+        display: inline-block;
+        margin-left: 10px;
+        font-family: 'Robot',  sans-serif;
+        font-size: 24px;
+        line-height: 1.0;
+        vertical-align: bottom;
+        @include media(sp) {
+          font-size: 22px;
+        }
+      }
+    }
+    &_share {
+      display: flex;
+      column-gap: 6px;
+      &Btn {
+        @include button($width: 40px, $width_sp: 36px, $line_height_sp: 36px);
+        height: 36px;
+        &Ico {
+          width: 14px;
+          height: 100%;
+          aspect-ratio: auto 1 / 1;
+          object-fit: contain;
+        }
+      }
+    }
+    &_doc {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      column-gap: 10px;
+      row-gap: 10px;
+      @include media(sp) {
+        justify-content: center;
+        column-gap: 2%;
+      }
+      &Btn {
+        @include button($width: 180px, $width_sp: 49%, $line_height_pc: 36px, $line_height_sp: 42px);
+        @include media(sp) {
+          &.btn_sp_none {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  &_price {
+    &_menu {
+      position: relative;
+      padding: 25px 20px 30px;
+      @include media(sp) {
+        padding: 18px 0 0;
+      }
+      &:last-of-type {
+        margin-bottom: 15px;
+        @include media(sp) {
+          margin-bottom: 7px;
+        }
+      }
+      &Board {
+        padding-bottom: 20px;
+        @include media(sp) {
+          padding-left: 2.7%;
+          padding-right: 2.7%;
+        }
+      }
+      &Hd {
+        position: relative;
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 1.0;
+        &::after {
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -12px;
+          width: 100%;
+          height: 2px;
+          content: '';
+        }
+        &Help {
+          display: inline-block;
+          width: 18px;
+          margin-left: 8px;
+          &Ico {
+            width: 100%;
+          }
+        }
+      }
+      &List {
+        display: flex;
+        align-items: flex-end;
+        column-gap: 7.5%;
+        @include media(sp) {
+          column-gap: 5%;
+        }
+      }
+      &.price_menu_general {
+        background-color: $COLOR_GREY;
+        .detail_price_menuHd::after {
+          background-color: $TEXT_COLOR;
+        }
+        & + .price_menu_peace {
+          margin-top: 46px;
+        }
+      }
+      &.price_menu_peace {
+        background-color: $COLOR_GREEN_BG;
+        .detail_price_menuHd::after {
+          background-color: $MAIN_COLOR;
+        }
+      }
+      &.price_menu_business {
+        
+        .detail_price_box {
+          border-top: 2px solid $COLOR_GREY_BORDER;
+          padding-top: 15px;
+        }
+        .detail_price_amount {
+          border-color: $MAIN_COLOR;
+        }
+      }
+    }
+    .detail_business_price {
+      .detail_price_menu {
+        padding: 20px;
+      }
+      .detail_price_menuHd {
+        margin-bottom: 0;
+        line-height: 2.0;
+        &::after {
+          display: none;
+        }
+      }
+      .detail_price_box {
+        border-top: 2px solid $COLOR_GREY_BORDER;
+        padding-top: 15px;
+        padding-right: 4%;
+      }
+      .price_menu_business .detail_price_amount {
+        border-color: $MAIN_COLOR;
+      }
+      .business_price_box .detail_price_boxNum {
+        display: inline-block;
+        margin-top: 0.45em;
+      }
+
+    }
+    &_box {
+      &Ttl {
+        font-size: clamp(12px, 1.07vw, 15px);
+        font-weight: 700;
+        @include media(sp) {
+          font-size: 13px;
+        }
+      }
+      &Link {
+        display: inline-block;
+        width: 1.4em;
+        margin-left: 1em;
+        border-radius: 50%;
+        background-color: $MAIN_COLOR;
+        color: #FFF;
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: center;
+      }
+      &Num {
+        font-family: 'Roboto', sans-serif;
+        font-size: clamp(20px, 2vw, 28px);
+        font-weight: 700;
+        line-height: 1.0;
+        @include media(sp) {
+          font-size: 24px;
+        }
+        &Em {
+          display: inline-block;
+          font-size: clamp(30px, 2.78vw, 39px);
+          line-height: 0;
+          @include media(sp) {
+            font-size: 32px;
+          }
+        }
+      }
+      &Unit {
+        font-size: 16px;
+      }
+    }
+    &_amount {
+      .detail_price_boxTtl {
+        margin-bottom: 10px;
+      }
+      .detail_price_boxNum {
+        font-size: clamp(24px, 2.14vw, 30px);
+      }
+    }
+    &_balloon {
+      position: absolute;
+      top: -16px;
+      left: 1em;
+      padding: 0 1em;
+      background-color: $MAIN_COLOR;
+      border-radius: 12px;
+      color: #FFF;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 24px;
+      text-align: center;
+      &::after {
+        display: block;
+        position: absolute;
+        top: 80%;
+        left: 10px;
+        width: 6px;
+        height: 12px;
+        background-color: $MAIN_COLOR;
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+        transform: rotate(-30deg);
+        content: '';
+      }
+    }
+    .detail_maintenance {
+      @include media(sp) {
+        background-color: #FFF;
+      }
+      &_item {
+        margin-bottom: 5px;
+        @include media(sp) {
+          margin-bottom: 0;
+          padding: 16px 2.7% 20px;
+          border-bottom: 1px solid $COLOR_GREY_BORDER;
+        }
+        &Head {
+          position: relative;
+          margin-bottom: 5px;
+          padding-left: 25px;
+          &::before {
+            display: block;
+            position: absolute;
+            top: calc(50% - 9px);
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: url('/assets/img/common/common_ico_tag.png') center/contain no-repeat;
+            content: '';
+            @include media(sp) {
+              top: -5px;
+            }
+          }
+          &H3 {
+            display: inline-block;
+            margin-right: 2em;
+            margin-bottom: 0;
+            font-size: 13px;
+            line-height: 1.0;
+            @include media(sp) {
+              display: block;
+              width: 100%;
+              margin-bottom: 20px;
+              margin-right: 0;
+            }
+          }
+          &Span {
+            font-size: 13px;
+            font-weight: 700;
+          }
+        }
+        &Descr {
+          padding-left: 25px;
+          font-size: 13px;
+          font-weight: 700;
+          line-height: 20px;
+        }
+        @include media(sp) {
+          .slide_item {
+            display: none;
+          }
+        }
+      }
+    }
+    &_note {
+      font-size: 13px;
+      @include media(sp) {
+        margin-bottom: 40px;
+        padding: 0 2.7%;
+      }
+    }
+    &_soldout {
+      margin-top: 20px;
+      &Lead {
+        margin-bottom: 10px;
+        color: $MAIN_COLOR;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+      &Btn {
+        @include button($width: 420px, $line_height_pc: 76px, $font_size_pc: 20px, $width_sp: 335px, $line_height_sp: 76px);
+        margin: 0 auto;
+        .btn_arrow {
+          right: 2%;
+        }
+      }
+    }
+  }
+  &_spec {
+    &_table {
+      display: flex;
+      @include media(sp) {
+        flex-wrap: wrap;
+      }
+      &Col {
+        flex-basis: 50%;
+        @include media(sp) {
+          flex-basis: 100%;
+        }
+      }
+    }
+    &_dl {
+      display: flex;
+      border: 1px solid $COLOR_GREY_BORDER;
+    }
+    &_dt, &_dd {
+      flex-basis: 50%;
+      flex-shrink: 0;
+      padding: 8px 8px;
+    }
+    &_dt {
+      background-color: $COLOR_GREY;
+      @include media(sp) {
+        flex-basis: 45%;
+      }
+    }
+    &_dd {
+      font-weight: 700;
+      @include media(sp) {
+        flex-basis: 55%;
+      }
+    }
+    .spec_dl_2row {
+      .detail_spec_dt {
+        height: 82px;
+        padding-top: 28px;
+        @include media(sp) {
+          height: auto;
+          padding-top: 8px;
+        }
+      }
+      .detail_spec_dd {
+        padding-top: 16px;
+        @include media(sp) {
+          padding-top: 8px;
+        }
+      }
+    }
+  }
+  &_support {
+    &_wrap {
+      padding: 30px 3.3% 46px;
+      background-color: $COLOR_GREEN_BG;
+      border-radius: 12px;
+    }
+    &_head {
+      position: relative;
+      margin-bottom: 24px;
+      padding: 0 4.5% 12px;
+      border-bottom: 1px dashed $MAIN_COLOR;
+      &Img {
+        position: absolute;
+        bottom: -10px;
+        left: 7px;
+        width: 36%;
+      }
+      &Ttl {
+        color: $MAIN_COLOR;
+        font-size: clamp(30px, 3.1vw, 40px);
+        line-height: 1.25;
+        letter-spacing: 0.05em;
+        text-align: right;
+        &Sup {
+          display: inline-block;
+          margin-right: 10px;
+          padding: 0 0.4em;
+          background-color: #FFF;
+          border: 2px solid $MAIN_COLOR;
+          border-radius: 6px;
+          font-size: clamp(16px, 1.87vw, 24px);
+          letter-spacing: 0.12em;
+          line-height: 1.5;
+          vertical-align: middle;
+        }
+      }
+    }
+    &_body {
+      margin-bottom: 30px;
+    }
+    &_btn {
+      @include button($width: 87.5%, $font_size_pc: clamp(16px, 1.56vw, 20px), $line_height_pc: 76px);
+      margin: 0 auto;
+      &Sup {
+        display: inline-block;
+        margin-right: 0.5em;
+        padding: 0 0.5em;
+        background-color: #FFF;
+        border-radius: 6px;
+        color: $MAIN_COLOR;
+        font-size: clamp(12px, 1.25vw, 16px);
+        letter-spacing: 0.1em;
+        line-height: 28px;
+        @include media(sp) {
+          font-size: 15px;
+        }
+      }
+      &Arrow {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  }
+  &_slide_btn {
+    display: none;
+    @include media(sp) {
+      display: block;
+      position: absolute;
+      top: calc(50% - 15px);
+      right: 0;
+    }
+  }
+}
+.relatedTruck {
+  &_control {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+    @include media(sp) {
+      padding-bottom: 60px;
+    }
+    &_backBtn{
+      @include button($width: 150px, $width_sp: 72px, $font_size_pc: 20px, $line_height_pc: 76px, $line_height_sp: 50px);
+    }
+  }
+}
+.detail_searchPanel {
+  padding-bottom: 100px;
+  @include media(sp) {
+    padding-bottom: 80px;
+  }
+}
+.detail_picture_gallery {
+  width: 100%;
+  #detail-main-slide {
+    .main_slider_item {
+      width: 100%;
+      aspect-ratio: auto 4/3;
+      &Img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .main_slider_arrow {
+      width: 50px;
+      height: 50px;
+      background-color: #FFF;
+      opacity: 1.0;
+      @include media(sp) {
+        width: 40px;
+        height: 40px;
+      }
+      svg {
+        fill: $MAIN_COLOR;
+      }
+    }
+  }
+  #detail-thumb-slide {
+    .thumb_slider_track {
+      width: 85%;
+      margin: 0 auto;
+      @include media(sp) {
+        padding-top: 20px;
+      }
+    }
+    .thumb_slider_item {
+      width: 80px;
+      // flex-shrink: 0;
+      aspect-ratio: auto 4/3;
+      &Img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &.is-active {
+        border-color: $MAIN_COLOR;
+        &::after {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background-color: rgba(14,147,82,0.3);
+          content: '';
+        }
+      }
+    }
+    .thumb_slider_arrow {
+      width: 34px;
+      height: 100%;
+      border-radius: 6px;
+      background-color: $MAIN_COLOR;
+      opacity: 1.0;
+      @include media(sp) {
+        width: 25px;
+        height: 45px;
+        top: unset;
+        bottom: 0;
+        transform: none;
+        border-radius: 3px;
+      }
+      svg {
+        fill: #FFF;
+      }
+      &:disabled {
+        background-color: $COLOR_GREY_BORDER;
+        svg {
+          fill: $COLOR_GREY;
+        }
+      }
+      &.thumb_slider_next {
+        right: 0;
+      }
+      &.thumb_slider_prev {
+        left: 0;
+      }
+    }
+  }
+}
+/* /assets/css/dist/detail.css より移動 */
+/* snsシェア　モーダルfor PC */
+
+  #modal10.c-modal {
+    z-index: 10000000;
+  }
+  #modal10 .c-modal_content._lg {
+    width: 100%;
+  }
+  #modal10 .c-modal_content {
+    left: 0;
+    bottom: 0;
+    top: auto;
+    transform: none;
+    border-radius: 0;
+  }
+
+  #modal10 .container {
+    padding-top: 60px;
+  }
+  #modal10 h2  {
+    text-align: center;
+  }
+  #modal10 .pc_sns_share_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #modal10 .pc_sns_share_wrap li  {
+    width: 48%;
+    margin-top: 3%;
+  }
+  #modal10 .pc_sns_share_wrap p {
+    margin-bottom: 0;
+  }
+  #modal10 .pc_sns_share_wrap .item_wrap .img_box {
+    margin-right: 40px;
+}
+  #modal10 .pc_sns_share_wrap .img_box img{
+    width: 40px;
+  }
+
+  #modal10 .pc_sns_share_wrap .item_wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  #modal10 .pc_sns_share_wrap .btn_sns_share {
+    display: block;
+    text-align: center;
+    box-shadow: 2px 2px #b5b5b5;
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 3% 18%;
+    font-size: 24px;
+  }
+  #modal10 .pc_sns_share_wrap li .line {
+    background-color: #00b900;
+  }
+  #modal10 .pc_sns_share_wrap li .fb {
+    background: #1877f2;
+  }
+  #modal10 .pc_sns_share_wrap li .twitter {
+      background: #1d9bf0;
+  }
+  #modal10 .pc_sns_share_wrap li .mail {
+    background: #0e9352;
+  }
+
+  #modal10 .btn_close {
+    font-size: 40px;
+  }
+  #modal10 a:hover {
+    text-decoration: none;
+  }
+
+
+@media screen and (max-width: 1100px) {
+  #modal10 .pc_sns_share_wrap .btn_sns_share {
+    font-size: 1.818vw;
+  }
+}
+/* リニューアル追加（PC/SPで共通化のため）*/
+#modal10 .pc_sns_share_wrap {
+  h2 {
+    font-size: 24px;
+  }
+}
+@include media(sp) {
+  #modal10 .pc_sns_share_wrap {
+    flex-wrap: wrap;
+    h2 {
+      font-size: 18px;
+      margin-bottom: 1em;
+    }
+    li {
+      flex-basis: 100%;
+    }
+    .btn_sns_share {
+      padding-left: 10%;
+      padding-right: 10%;
+      .img_box {
+        margin-right: 20px;
+        img {
+          width: 36px;
+        }
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+}
+// luminous lightbox のCSS上書き
+.lum-lightbox.lum-open {
+  z-index: 10001;
+  .lum-img {
+    @include media(sp) {
+      width: 100%;
+    }
+  }
+}

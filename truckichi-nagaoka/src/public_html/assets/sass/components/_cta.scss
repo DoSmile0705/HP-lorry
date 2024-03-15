@@ -1,0 +1,386 @@
+@use "../base/setting" as *;
+@use "../base/mixin" as *;
+
+/*----------------------------------------------------------
+
+ CTA
+
+----------------------------------------------------------*/
+.cta_btn {
+  position: relative;
+  border: none;
+  @include media(sp) {
+    width: 100%;
+    border: 2px solid $MAIN_COLOR;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 $COLOR_GREEN_SHADOW;
+    background-color: #FFF;
+    text-align: right;
+  }
+  &_tel {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include media(sp) {
+      padding: 10px 18% 4px 7.5%;
+    }
+    &Copy {
+      font-size: clamp(10px, 1.25vw, 16px);
+      letter-spacing: 0.426em;
+      line-height: 24px;
+      text-align: right;
+      @include media(sp) {
+        font-size: 10px;
+        line-height: 15px;
+        letter-spacing: 0.26em;
+      }
+    }  
+    &No {
+      margin-bottom: 4px;
+      @include media(sp) {
+        margin-bottom: 0;
+      }
+      &Icon {
+        width: clamp(22px, 2.65vw, 34px);
+        aspect-ratio: auto 34 / 44;
+        vertical-align: middle;
+        @include media(sp) {
+          width: clamp(18px,4.8vw, 34px);
+        }
+      }
+      &Text {
+        font-family: 'Roboto', sans-serif;
+        font-size: clamp(32px,4.4vw,60px);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.0;
+        vertical-align: middle;
+        @include media(sp) {
+          font-size: clamp(32px, 8.5vw, 60px);
+        }
+      }
+      &Hour {
+        width: 100%;
+      }
+    }
+    &Free {
+      display: inline-block;
+      position: absolute;
+      top: -10px;
+      left: 8%;
+      border-radius: 15px;
+      padding: 0 1em;
+      font-size: clamp(10px,1.25vw,16px);
+      line-height: 1.875;
+      letter-spacing: 0.15em;
+      text-align: center;
+      @include media(sp) {
+        top: -6px;
+        left: 15%;
+        font-size: 10px;
+      }
+      &::after {
+        display: block;
+        position: absolute;
+        top: 80%;
+        left: 10px;
+        width: 9px;
+        height: 17px;
+        background-color: $MAIN_COLOR;
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+        transform: rotate(-30deg);
+        content: '';
+      }
+    }
+    .btn_arrow {
+      position: absolute;
+      right: 5%;
+      top: calc(50% - 11px);
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+.cta_typeA {
+  position: relative;
+  width: 100%;
+  border: 6px solid $MAIN_COLOR;
+  border-radius: 12px;
+  @include media(sp) {
+    border-width: 4px;
+  }
+  &_head {
+    font-size: 26px;
+    letter-spacing: 0.2em;
+    line-height: 70px;
+    text-align: center;
+    @include media(sp) {
+      padding-left: 20px;
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      line-height: 56px;
+      text-align: left;
+    }
+  }
+  &_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 45px 5% 25px 20%;
+    border-radius: 0 0 6px 6px;
+    background-color: $COLOR_GREEN_BG;
+    @include media(sp) {
+      flex-wrap: wrap;
+      row-gap: 15px;
+      padding: 20px 20px 26px 20px;
+    }
+  }
+  &_tel {
+    flex-basis: 48%;
+    @include media(sp) {
+      flex-basis: 100%;
+    }
+  }
+  &_btn {
+    flex-basis: 48%;
+    @include button($font_size_pc: clamp(20px,1.87vw,24px), $font_size_sp: 20px,$line_height_pc: 76px, $line_height_sp: 76px, $letter_spacing: 0.025em);
+    margin-bottom: 20px;
+    @include media(sp) {
+      flex-basis: 100%;
+      margin-bottom: 0;
+    }
+    .btn_arrow {
+      width: 26px;
+      height: 26px;
+      @include media(sp) {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+  &_img {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 2.9%;
+    width: 16.3%;
+    @include media(sp) {
+      top: -97px;
+      bottom: unset;
+      left: unset;
+      right: 1%;
+      width: 31%;
+    }
+  }
+}
+.cta_typeB {
+  position: relative;
+  width: 100%;
+  border: 6px solid $MAIN_COLOR;
+  border-radius: 12px;
+  @include media(sp) {
+    border-width: 4px;
+  }
+  &_body {
+    position: relative;
+    padding: 25px 5% 25px 36%;
+    border-radius: 0 0 6px 6px;
+    background-color: $COLOR_GREEN_BG;
+    @include media(sp) {
+      flex-wrap: wrap;
+      row-gap: 15px;
+      padding: 20px 20px 26px 20px;
+    }
+    .cta_btn_tel {
+      padding-top: 24px;
+      &No, &NoText {
+        position: relative;
+      }
+      &NoText {
+        font-size: clamp(34px, 4.4vw, 54px);
+        @include media(sp) {
+          font-size: clamp(32px, 8.5vw, 60px);
+        }
+      }
+      &Copy {
+        position: absolute;
+        bottom: 100%;
+        right: 0;
+        font-size: clamp(10px, 1.1vw, 14px);
+        letter-spacing: 0.52em;
+        line-height: 1.0;
+        @include media(sp) {
+          font-size: 10px;
+          letter-spacing: 0.26em;
+        }
+      }
+      &Free {
+        top: -30px;
+        left: 0;
+      }
+    }
+    .cta_typeB_img {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 8%;
+      width: 16.7%;
+      min-width: 130px;
+      @include media(sp) {
+        top: -97px;
+        bottom: unset;
+        left: unset;
+        right: 1%;
+        width:31%;
+        min-width: unset;
+      }
+    }
+  }
+}
+.cta_detail {
+  margin-bottom: 30px;
+  border: 3px solid $COLOR_GREEN_BG;
+  background-color: #FFF;
+  @include media(sp) {
+    margin-top: 40px;
+    border-color: $MAIN_COLOR;
+  }
+  &_head {
+    font-size: 26px;
+    letter-spacing: 0.2em;
+    line-height: 70px;
+    text-align: center;
+    @include media(sp) {
+      padding-left: 20px;
+      font-size: 18px;
+      letter-spacing: 0.1em;
+      line-height: 56px;
+      text-align: left;
+    }
+  }
+  &_body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    position: relative;
+    padding: 20px;
+    @include media(sp) {
+      flex-wrap: wrap;
+      row-gap: 15px;
+      padding: 20px 20px 26px 20px;
+      background-color: $COLOR_GREEN_BG;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+  &_tel {
+    flex-basis: 47%;
+    min-width: 240px;
+    @include media(sp) {
+      flex-basis: 100%;
+    }
+    &Btn {
+      .cta_btn_telNoText {
+        @include media(pc) {
+          font-size: 34px;
+        }
+      }
+      .cta_btn_telNoIcon {
+        width: 19px;
+      }
+      .cta_btn_telFree {
+        @include media(pc) {
+          left: 9px;
+          font-size: 10px;
+          &::after {
+            width: 6px;
+            height: 12px;
+          }
+        }
+      }
+      .cta_btn_telCopy {
+        font-size: 10px;
+        line-height: 1.4;
+        letter-spacing: 0.3em;
+      }
+    }
+  }
+  &_btn {
+    flex-basis: 51%;
+    min-width: 260px;
+    @include button($font_size_pc: 18px, $font_size_sp: 20px,$line_height_pc: 60px, $line_height_sp: 60px, $letter_spacing: 0.05em);
+    @include media(sp) {
+      flex-basis: 100%;
+    }
+    .btn_arrow {
+      width: 26px;
+      height: 26px;
+      @include media(sp) {
+        width: 22px;
+        height: 22px;
+      }
+    }
+    &.btn_line {
+      @include media(pc) {
+        display: none;
+      }
+    }
+    &Balloon {
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 70px;
+      background-color: #FFF;
+      border: 2px solid $MAIN_COLOR;
+      border-radius: 12px;
+      color: $MAIN_COLOR;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      line-height: 20px;
+      text-align: center;
+      &::after {
+        display: block;
+        position: absolute;
+        top: 80%;
+        left: 10px;
+        width: 6px;
+        height: 12px;
+        background-color: #FFF;
+        clip-path: polygon(0 0, 100% 0, 10% 100%);
+        transform: rotate(-30deg);
+        content: '';
+      }
+    }
+  }
+  &_img {
+    position: absolute;
+    bottom: 0;
+    left: 2.9%;
+    width: 16.3%;
+    @include media(sp) {
+      top: -97px;
+      bottom: unset;
+      left: unset;
+      right: 1%;
+      width: 31%;
+    }
+  }
+  &_img {
+    position: absolute;
+    bottom: 0;
+    left: 2.9%;
+    width: 16.3%;
+    @include media(sp) {
+      top: -97px;
+      bottom: unset;
+      left: unset;
+      right: 1%;
+      width: 31%;
+    }
+  }
+}

@@ -1,0 +1,180 @@
+@use "mixin" as *;
+@use "setting" as *;
+
+/*----------------------------------------------------------
+
+全体
+
+----------------------------------------------------------*/
+/**
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $brown;
+  font-size: 1.4em;
+  letter-spacing: .05em;
+  line-height: 1.75;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+strong {
+  font-weight: bold;
+}
+
+sup,
+sub {
+  font-size: 10px;
+  height: 0;
+  line-height: 1;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  bottom: 1ex;
+}
+
+sub {
+  top: .5ex;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #707070;
+}
+
+a {
+  color: $brown;
+  text-decoration: underline;
+  transition: .5s;
+  &:hover {
+    opacity: .7;
+  }
+
+  &.td_none {
+    &:hover {
+      text-decoration: underline !important;
+      opacity: 1;
+    }
+  }
+}
+
+table {
+  width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+  @include gothic;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+input {
+
+  &[type="text"],
+  &[type="email"],
+  &[type="tel"],
+  &[type="url"],
+  &[type="password"],
+  &[type="search"] {
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 0px;
+    appearance: none;
+  }
+}
+
+textarea {
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 0px;
+  appearance: none;
+}
+
+input {
+  &[type="button"],
+  &[type="submit"],
+  &[type="reset"] {
+    border-radius: 0px;
+    cursor: pointer;
+  }
+}
+
+label {
+  cursor: pointer;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+**/
+body {
+  margin: 0;
+  font-family: "Noto Sans JP",sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  color: $TEXT_COLOR;
+  text-align: left;
+  background-color: #fff;
+  @include media(sp) {
+    font-size: 16px;
+  }
+}
+body * {
+  box-sizing: border-box;
+  min-width: 0;
+}
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.0;
+}
+button {
+  background: none;
+  padding: 0;
+  font-family: inherit;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+@media (min-width: 769px) {
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+b {
+  font-weight: 700;
+}

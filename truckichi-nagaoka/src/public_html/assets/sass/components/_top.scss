@@ -1,0 +1,739 @@
+@use "../base/setting" as *;
+@use "../base/mixin" as *;
+
+/*----------------------------------------------------------
+
+トップページ
+
+----------------------------------------------------------*/
+
+/* KV */
+/* ============================================ */
+.top_slider {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 27px;
+  @include media(sp) {
+    max-width: 100%;
+  }
+  .splide__arrow {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(17,17,17,0.6);
+    @include media(sp) {
+      width: 30px;
+      height: 30px;
+    }
+    &--prev {
+      left: 70px;
+      @include media(sp) {
+        left: 10px;
+      }
+    }
+    &--next {
+      right: 70px;
+      @include media(sp) {
+        right: 10px;
+      }
+    }
+    svg {
+      fill: #FFF;
+    }
+  }
+  .splide__pagination {
+    column-gap: 10px;
+    bottom: 0;
+    &__page {
+      width: 12px;
+      height: 12px;
+      margin: 0;
+      background-color: #CCC;
+      &.is-active {
+        background-color: $MAIN_COLOR;
+        transform: none;
+      }
+    }
+  }
+}
+.top_search {
+  padding-bottom: 40px;
+  &_truck {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    @include media(sp) {
+      display: none;
+    }
+    &Head {
+      display: flex;
+      align-items: flex-end;
+      column-gap: 20px;
+      flex-basis: 50%;
+      min-width: 510px;
+      &Stock {        
+        font-size: 18px;
+        font-weight: 700;
+        &Count {
+          font-size: 30px;
+          line-height: 1.0;
+        }
+        &Small {
+          font-size: 15px;
+          font-weight: 500;
+        }
+      }
+    }
+    &Keyword {
+      flex-grow: 1;
+      min-width: 440px;
+      &Title {
+        font-size: 18px;
+        font-weight: 700;
+      }
+      .common_site_search {
+        padding: 0 20px;
+        border: 1px solid #CCC;
+        border-radius: 6px 0 0 6px;
+        font-size: 15px;
+        line-height: 48px;
+        vertical-align: middle;
+        &Btn {
+          display: inline-block;
+          width: 56px;
+          height: 50px;
+          padding: 10px;
+          border-radius: 0 6px 6px 0;
+          background-color: $MAIN_COLOR;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.top_h2 {
+  font-size: 32px;
+  line-height: 1.0;
+  letter-spacing: 0.025em;
+  @include media(sp){
+    font-size: 24px;
+    line-height: 1.58;
+  }
+  &_en {
+    margin-bottom: 10px;
+    color: $MAIN_COLOR;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    @include media(sp){
+      font-size: 11px;
+    }
+  }
+}
+.top_info {
+  .headline_news.news_anounce {
+    @include media(sp){
+      display: none;
+    }
+  }
+}
+.top_matching {
+  position: relative;
+  margin-bottom: 90px;
+  @include media(sp) {
+    margin-bottom: 60px;
+  }
+  &_head {
+    position: relative;
+    margin-bottom: 150px;
+    padding: 77px 0 144px;
+    @media screen and (max-width: 1040px) {
+      margin-bottom: 180px;
+    }
+    @include media(sp) {
+      // margin-bottom: 180px;
+      padding: 57px 0 395px;
+    }
+    .top_matching_h2 {
+      margin-bottom: 30px;
+      font-size: 42px;
+      line-height: 61px;
+      text-align: center;
+      @include media(sp) {
+        font-size: 36px;
+        line-height: 50px;
+      }
+      &_en {
+        opacity: 0.5;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+    &_catch {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 35px;
+      text-align: center;
+      @include media(sp) {
+        font-size: 20px;
+        line-height: 29px;
+      }
+      .catch_em {
+        padding: 0 10px;
+        font-size: 32px;
+        line-height: 46px;
+        @include media(sp) {
+          font-size: 28px;
+          line-height: 40px;
+        }
+      }
+      &Span {
+        display: inline-block;
+        position: relative;
+        &::before, &::after {
+          display: block;
+          position: absolute;
+          top: calc(50% - 32px);
+          width: 1px;
+          height: 64px;
+          background-color: #FFF;
+          content: '';
+          @include media(sp) {
+            top: calc(50% - 51px);
+            height: 102px;
+          }
+        }
+        &::before {
+          left: -30px;
+          transform: rotate(-25deg);
+          @include media(sp) {
+            left: -13px;
+            transform: rotate(-12deg);
+          }
+        }
+        &::after {
+          right: -30px;
+          transform: rotate(25deg);
+          @include media(sp) {
+            right: -13px;
+            transform: rotate(12deg);
+          }
+        }
+      }
+    }
+    &_illust {
+      display: block;
+      position: absolute;
+      top: -46px;
+      left: calc(50% - 88px);
+      width: 176px;
+      height: 92px;
+      @include media(sp) {
+        top: -38px;
+        left: calc(50% - 73px);
+        width: 146px;
+        height: 76px;
+      }
+    }
+    &_cut {
+      position: absolute;
+      top: calc(100% - 100px);
+      width: 100%;
+      @include media(sp) {
+        top: calc(100% - 380px);
+      }
+    }
+    &_list {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      @include media(sp) {
+        flex-wrap: wrap;
+        row-gap: 15px;
+        margin-bottom: 15px;
+        padding: 0 5px;
+      }
+      &Item {
+        position: relative;
+        flex-basis: 32%;
+        padding: 40px 0;
+        border-radius: 12px;
+        background-color: #FFF;
+        box-shadow: 0 3px 20px rgba(0,0,0,0.12);
+        color: $TEXT_COLOR;
+        @include media(sp) {
+          flex-basis: 100%;
+          padding: 32px 0 30px;
+        }
+        &_text {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1.45;
+          text-align: center;
+          @include media(sp) {
+            font-size: 18px;
+          }
+          &M {
+            font-size: 24px;
+            @include media(sp) {
+              font-size: 22px;
+            }
+          }
+          &L {
+            font-size: 36px;
+            line-height: 1.33;
+            @include media(sp) {
+              font-size: 32px;
+            }
+          }
+        }
+        &_num {
+          display: block;
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          top: -10px;
+          left: -10px;
+          border-radius: 50%;
+          background-color: $COLOR_YELLOW;
+          color: $MAIN_COLOR;
+          font-family: 'Roboto', sans-serif;
+          font-size: 30px;
+          line-height: 70px;
+          text-align: center;
+          &::after {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 17px;
+            height: 10px;
+            background-color: $COLOR_YELLOW;
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            transform: rotate(45deg);
+            content: '';
+          }
+        }
+      }
+    }
+    &_note {
+      padding-left: 5px;
+      color: $TEXT_COLOR;
+      font-size: 13px;
+    }
+  }
+}
+.top_news_sp {
+  margin-bottom: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.top_line {
+  border-radius: 12px;
+  background-color: #EFEFEF;
+  @include media(sp) {
+    @include full_width();
+    border-radius: 0;
+  }
+  &_wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: 5.5%;
+    padding: 40px 5.8% 58px;
+    @include media(sp) {
+      flex-direction: column;
+      align-items: initial;
+      row-gap: 20px;
+      padding: 32px 5% 40px;
+    }
+  }
+  &_cta {
+    flex-basis: 422px;
+    flex-shrink: 0;
+    @include media(sp) {
+      flex-basis: 100%;
+    }
+    &_h2 {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      &em {
+        color: #4CC764;
+        font-size: 84px;
+        line-height: 1.0;
+        letter-spacing: 0;
+        @include media(sp) {
+          font-size: 68px;
+        }
+      }
+      &normal {
+        margin-left: 1em;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.45;
+        @include media(sp) {
+          font-size: 19px;
+        }
+      }
+    }
+    &_black {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 28px;
+      &Span {
+        width: 200px;
+        background-color: $TEXT_COLOR;
+        color: #FFF;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        line-height: 40px;
+        text-align: center;
+        @include media(sp) {
+          width: 163px;
+        }
+      }
+    }
+    &_p {
+      margin-bottom: 20px;
+      text-align: center;
+      &Span {
+        position: relative;
+        font-size: 15px;
+        font-weight: 700;
+        &::before, &::after {
+          display: block;
+          position: absolute;
+          top: calc(50% - 27px);
+          width: 1px;
+          height: 54px;
+          background-color: $MAIN_COLOR;
+          content: '';
+        }
+        &::before {
+          left: -2em;
+          transform: rotate(-20deg);
+        }
+        &::after {
+          right: -2em;
+          transform: rotate(20deg);
+        }
+      }
+    }
+    &_btn {
+      @include button($font_size_pc: 20px, $font-size_sp: 18px, $line_height_pc: 76px, $line_height_sp: 76px);
+    }
+  }
+  &_comment {
+    flex-grow: 1;
+    @include media(sp) {
+      flex-basis: 100%;
+    }
+    &_balloon {
+      margin-bottom: 25px;
+      @include media(sp) {
+        margin-bottom: 15px;
+      }
+      &Span {
+        display: inline-block;
+        position: relative;
+        padding: 10px 1.5em;
+        background-color: #FFF;
+        border-radius: 25px;
+        font-size: 20px;
+        text-align: left;
+        @include media(sp) {
+          font-size: 18px;
+        }
+        &::after {
+          display: block;
+          position: absolute;
+          top: 0;
+          width: 13px;
+          height: 13px;
+          background-color: #FFF;
+          content: '';
+        }
+      }
+      &.balloon_right {
+        text-align: right;
+      }
+      &.balloon_left &Span::after {
+        left: 0;
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+        transform: rotate(-20deg);
+      }
+      &.balloon_right &Span::after {
+        right: 0;
+        clip-path: polygon(100% 0, 100% 100%, 0 100%);
+        transform: rotate(20deg);
+      }
+    }
+  }
+}
+.top_articles {
+  &_archive {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 25px;
+    row-gap: 30px;
+    margin-top: 42px;
+    @include media(sp){
+      column-gap: 2.5%;
+      margin-top: 32px;
+    }
+  }
+  .top_article {
+    flex-basis: 220px;
+    @include media(sp){
+      flex-basis: 170px;
+    }
+    &_img {
+      display: block;
+      width: 100%;
+      aspect-ratio: auto 220 / 141;
+      margin-bottom: 10px;
+    }
+    &_ttl {
+      line-height: 1.6;
+      text-decoration: underline;
+    }
+  }
+}
+.top_section {
+  padding: 100px 0;
+  @include media(sp) {
+    padding: 60px 0;
+  }
+}
+.top_commitment {
+  background-color: $COLOR_GREEN_BG;
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 2.5%;
+    row-gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 22px;
+    @include media(sp) {
+      row-gap: 23px;
+    }
+    &Card {
+      position: relative;
+      flex-basis: 380px;
+      padding: 30px 30px 40px 30px;
+      border-radius: 12px;
+      background-color: #FFF;
+      @include media(sp) {
+        flex-basis: 100%;
+        padding: 20px 30px 0px 30px;
+      }
+      &_flag {
+        position: absolute;
+        left: 24px;
+        top: -8px;
+        width: 60px;
+        height: 104px;
+        padding-top: 34px;
+        background-color: $MAIN_COLOR;
+        color: #FFF;
+        text-align: center;
+        @include media(sp) {
+          width: 50px;
+          height: 90px;
+        }
+        &Point {
+          display: block;
+          font-family: 'Roboto', sans-serif;
+          font-size: 13px;
+          @include media(sp) {
+            font-size: 11px;
+          }
+        }
+        &Num {
+          display: block;
+          font-family: 'Roboto', sans-serif;
+          font-size: 38px;
+          line-height: 1.0;
+          @include media(sp) {
+            font-size: 30px;
+          }
+        }
+        &::before {
+          display: block;
+          position: absolute;
+          left: -4px;
+          top: 0;
+          width: 4px;
+          height: 8px;
+          background-color: $COLOR_GREEN_SHADOW;
+          clip-path: polygon(100% 0, 100% 100%, 0 100%);
+          content: '';
+        }
+      }
+      &_ttl {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 64px;
+        margin-bottom: 30px;
+        padding-left: 74px;
+        @include media(sp) {
+          padding-left: 62px;
+        }
+        &Txt {
+          font-size: 20px;
+          line-height: 1.6;
+        }
+        &Btn {
+          display: none;
+          @include media(sp) {
+            display: block;
+            position: absolute;
+            top: calc(50% - 15px);
+            right: 0;
+            transform: translateX(50%);
+          }
+        }
+      }
+      .slide_item {
+        @include media(sp) {
+          display: none;
+        }
+      }
+      &_pic {
+        display: block;
+        width: 100%;
+        height: 100px;
+        margin-bottom: 20px;
+        @include media(sp) {
+          height: 92px;
+        }
+        &Img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+.top_declaration {
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2.2%;
+    row-gap: 30px;
+    margin-top: 68px;
+    margin-bottom: 22px;
+    @include media(sp) {
+      margin-top: 53px;
+    }
+    &Item {
+      flex-basis: 280px;
+      position: relative;
+      border: 2px solid $MAIN_COLOR;
+      border-radius: 12px;
+      @include media(sp) {
+        flex-basis: 100%;
+      }
+      &_num {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        color: #FFF;
+        -webkit-text-stroke: 2px $MAIN_COLOR;
+        font-family: 'Roboto', sans-serif;
+        font-size: 60px;
+        line-height: 1.0;
+        @include media(sp) {
+          top: -25px;
+          left: 18px;
+          transform: none;
+          font-size: 50px;
+        }
+      }
+      &_ttl {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 224px;
+        border-radius: 9px 9px 0 0;
+        background-color: $MAIN_COLOR;
+        color: #FFF;
+        font-size: 24px;
+        line-height: 1.45;
+        text-align: center;
+        @include media(sp) {
+          justify-content: flex-start;
+          height: 100px;
+          padding-left: 26px;
+          font-size: 22px;
+          text-align: left;
+        }
+        &Btn {
+          display: none;
+          @include media(sp) {
+            display: block;
+            position: absolute;
+            top: calc(50% - 15px);
+            right: 26px;
+          }
+        }
+      }
+      @include media(sp) {
+        &.slide_collapsed &_ttl {
+          border-radius: 9px;
+        }
+      }
+      .slide_item {
+        @include media(sp) {
+          display: none;
+        }
+      }
+      &_h4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90px;
+        background-color: $COLOR_GREEN_BG;
+        color: $MAIN_COLOR;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: center;
+      }
+      &_txt {
+        padding: 20px 30px 30px 30px;
+        @include media(sp) {
+          padding: 18px 26px 20px 26px;
+        }
+      }
+    }
+  }
+}
+.top_link_more {
+  display: block;
+  font-weight: 700;
+  text-align: right;
+  &_arrow {
+    margin-left: 5px;
+  }
+  &_txt, &_arrow {
+    vertical-align: middle;
+  }
+}

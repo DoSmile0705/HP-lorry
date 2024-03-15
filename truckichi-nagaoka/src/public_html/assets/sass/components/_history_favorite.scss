@@ -1,0 +1,282 @@
+@use "../base/mixin" as *;
+@use "../base/setting" as *;
+
+.history_contact {
+  margin-bottom: 16px;
+  padding: 13px 0;
+  background-color: $COLOR_GREEN_BG;
+  @include media(sp) {
+    margin-bottom: 10px;
+    padding: 18px 0;
+  }
+  &_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1.3%;
+    row-gap: 7px;
+  }
+  &_text {
+    font-weight: 700;
+    &Num {
+      font-size: 20px;
+    }
+  }
+  &_btn {
+    @include button($width: 320px, $width_sp: 320px, $line_height_pc: 44px, $line_height_sp: 50px);
+    padding-left: 1em;
+    text-align: left;
+    &_link {
+      @include media(sp) {
+        letter-spacing: 0.05em;
+      }
+    }
+  }
+}
+.history_table {
+  margin-bottom: 30px;
+}
+.truck_list {
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  padding-bottom: 30px;
+  @include media(sp) {
+    padding-bottom: 25px;
+  }
+  .simplebar-track {
+    width: calc(100% - 170px);
+    left: unset;
+    background-color: $COLOR_GREY;
+    @include media(sp) {
+      width: calc(100% - 140px);
+    }
+    .simplebar-scrollbar::before {
+      background-color: $COLOR_GREY_BORDER;
+      opacity: 1.0;
+    }
+  }
+}
+.truck_listTable {
+  table-layout: fixed;
+  writing-mode: vertical-lr;
+  &_th, &_td {
+    // iphone対策：heightを指定しないとつぶれる
+    min-height: 43px;
+    line-height: 40px;
+    border: 1px solid $COLOR_GREY_BORDER;
+    vertical-align: middle;
+    text-align: center;
+    // writing-mode: horizontal-tb;
+    @include media(sp) {
+      min-height: 35px;
+      line-height: 34px;
+    }
+    .truck_listTable_hr {
+      writing-mode: horizontal-tb;
+    }
+  }
+  &_th {
+    position: relative;
+    width: 170px;
+    background-color:$COLOR_GREY;
+    border-left-width: 0;
+    font-weight: 700;
+    @include media(sp) {
+      width: 140px;
+    }
+    &.th_auto {
+      height: auto;
+    }
+    &.bg_lightgreen {
+      background-color: $COLOR_GREEN_BG;
+    }
+    &::before {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+      background-color: $COLOR_GREY_BORDER;
+      content: '';
+    }
+  }
+  &_td {
+    width: 220px;
+    @include media(sp) {
+      width: 210px;
+    }
+  }
+  thead tr {
+    position: sticky;
+    left: 0;
+    z-index: 100;
+  }
+  &_blank {
+    background-color: #FFF;
+  }
+  &_trash {
+    border: none;
+    &Ico {
+      margin-right: 6px;
+    }
+    &Txt {
+      text-decoration: underline;
+    }
+  }
+  &_check {
+    padding: 10px 0;
+    @include media(sp) {
+      padding: 7px 0;
+    }
+    &Input {
+      display: none;
+    }
+    &Box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      border: 1px solid $COLOR_GREY_BORDER;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    &Input:checked ~ &Box {
+      background-color: $MAIN_COLOR;
+      border: none;
+      path {
+        fill: #FFF;
+      }
+    }
+  }
+  &_contactNo {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: underline;
+  }
+  &_title {
+    height: auto;
+    padding: 10px 0 16px;
+    vertical-align: top;
+    word-break: break-all;
+    text-align: left;
+    &Fig {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 0 auto 10px;
+      @include media(sp) {
+        width: 190px;
+        height: 142px;
+      }
+      &Img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &Tag {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        color: #FFF;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 22px;
+        padding: 0 0.5em;
+        &.tag_new {
+          background-color: $COLOR_RED;
+        }
+        &.tag_soldout {
+          background-color: $TEXT_COLOR;
+        }
+      }
+      &.fig_soldout::before {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(51,51,51,0.4);
+        content: '';
+      }
+    }
+    &Name {
+      padding: 0 10px;
+      color: $MAIN_COLOR;
+      line-height: 1.6;
+    }
+  }
+  &_price {
+    font-weight: 700;
+    &Num {
+      margin-right: 3px;
+      font-family: 'Roboto', sans-serif;
+      &Em {
+        font-size: 20px;
+      }
+    }
+  }
+  &_form {
+    height: 68px;
+    min-height: 68px;
+    padding: 10px 0;
+    &Btn {
+      @include button($width: 200px, $line_height_pc: 44px, $width_sp: 190px, $line_height_sp: 44px);
+      margin: 0 auto;
+      padding-left: 1em;
+      text-align: left;
+      &_link {
+        @include media(sp) {
+          letter-spacing: 0.01em;
+        }
+      }
+      &.btn_soldout {
+        .truck_listTable_formBtn_link {
+          font-size: 13px;
+        }
+      }
+      &Free {
+        display: block;
+        width: 50px;
+        position: absolute;
+        left: 7px;
+        top: -7px;
+        background-color: #FFF;
+        border: 2px solid $MAIN_COLOR;
+        border-radius: 9px;
+        color: $MAIN_COLOR;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 16px;
+        text-align: center;
+        &::after {
+          display: block;
+          width: 8px;
+          height: 5px;
+          position: absolute;
+          left: 2px;
+          top: calc(100% - 2px);
+          background-color: #FFF;
+          clip-path: polygon(0 0, 100% 0, 100% 100%);
+          content: '';
+        }
+      }
+    }
+  }
+}
+.cta_typeB {
+  margin-top: 60px;
+  @include media(sp) {
+    margin-top: 56px;
+  }
+}

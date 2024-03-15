@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<!--HP{$documentRoot}HP-->/js/common.js"></script>
